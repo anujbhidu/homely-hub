@@ -1,6 +1,7 @@
 import React from 'react'
 import "../../css/Home.css"
 import Search from './Search'
+import Filter from './Filter'
 
 const Header = () => {
   return (
@@ -9,7 +10,8 @@ const Header = () => {
               <img src='/assets/logo.png' alt='logo' className='logo' />
               
               <div className='search_filter'>
-                  <Search/>
+                  <Search />
+                  <Filter/>
               </div>
 
               <span className='material-symbols-outlined web_logo'>
