@@ -3,6 +3,7 @@ import PropertyImg from './PropertyImg'
 import "../../css/PropertyListing.css"
 import PropertyAmenities from './PropertyAmenities'
 import PaymentForm from './PaymentForm'
+import PropertyMapInfo from './PropertyMapInfo'
 
 const PropertyListing = () => {
   return (
@@ -25,6 +26,12 @@ const PropertyListing = () => {
               </div>
               <div className='property-payment col-md-4 col-sm-12 col-12'>
                   <PaymentForm/>
+              </div>
+          </div>
+          <hr />
+          <div className='property-map'>
+              <div className='map-image-exinfo-container row'>
+                  <PropertyMapInfo/>
               </div>
           </div>
     </div>
