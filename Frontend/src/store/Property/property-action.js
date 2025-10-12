@@ -1,6 +1,6 @@
-// import { propertyAction } from "./property-slice";
-// import { axiosInstance } from "../../utils/axios";
+import { propertyAction } from "./property-slice";
+import { axiosInstance } from "../../utils/axios";
 
-// export const getAllProperties = () => async (dispatch, getState) => {
+export const getAllProperties = () => async (dispatch, getState) => {
     
-// }
+}
