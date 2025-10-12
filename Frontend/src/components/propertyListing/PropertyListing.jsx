@@ -2,6 +2,7 @@ import React from 'react'
 import PropertyImg from './PropertyImg'
 import "../../css/PropertyListing.css"
 import PropertyAmenities from './PropertyAmenities'
+import PaymentForm from './PaymentForm'
 
 const PropertyListing = () => {
   return (
@@ -21,6 +22,9 @@ const PropertyListing = () => {
                   </p>
                   <hr />
                   <PropertyAmenities amenities={["Wifi", "Kitchen", "Pool", "AC"]}/>
+              </div>
+              <div className='property-payment col-md-4 col-sm-12 col-12'>
+                  <PaymentForm/>
               </div>
           </div>
     </div>
