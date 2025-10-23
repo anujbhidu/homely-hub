@@ -1,6 +1,12 @@
 import React from 'react'
 import "../../css/Home.css"
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useEffect,useState,useRef } from 'react'
+
+import { useDispatch,useSelector } from 'react-redux'
+import { propertyAction } from '../../store/Property/property-slice'
+import { getAllProperties } from '../../store/Property/property-action'
+import gsap from 'gsap'
 
 const Card = ({ image, name, address, price,id}) => {
     return (
@@ -32,55 +38,35 @@ const Card = ({ image, name, address, price,id}) => {
 }
 
 const PropertyList = () => {
-    const properties = [
-        {
-        _id: "1",
-        images: [{ url: "/assets/property2.webp" }],
-        propertyName:"Cozy Villa",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
-        },
-         {
-        _id: "2",
-        images: [{ url: "/assets/property3.webp" }],
-        propertyName:"Modern Apartment",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
-        },
-          {
-        _id: "3",
-        images: [{ url: "/assets/property3.webp" }],
-        propertyName:"Cozy Villa",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
-        },
-           {
-        _id: "4",
-        images: [{ url: "/assets/property2.webp" }],
-        propertyName:"Cozy Villa",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
-        },
-            {
-        _id: "5",
-        images: [{ url: "/assets/property2.webp" }],
-        propertyName:"Cozy Villa",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
-        },
-             {
-        _id: "6",
-        images: [{ url: "/assets/property2.webp" }],
-        propertyName:"Cozy Villa",
-        address: { city: "Mumbai", state: "MH", pincode: "4000001" },
-        price:2500,
+    const [currentPage, setCurrentPage] = useState({ page: 1 })
+    const dispatch = useDispatch();
+    const { properties, totalProperties } = useSelector((state) => state.properties);
+    const lastPage = Math.ceil(totalProperties / 12);
+    const propertyListRef = useRef(null);
+
+    useEffect(() => {
+        const fetchProperties = async (page) => {
+            dispatch(propertyAction.updateSearchParams(page));
+            dispatch(getAllProperties())
+        };
+
+        fetchProperties(currentPage)
+    }, [currentPage, dispatch])
+    
+    useEffect(()=> {
+        if (propertyListRef.current) {
+            gsap.fromTo(propertyListRef.current.children, { y: 50, opacity: 0 }, {
+                y:0,opacity:1,duration:0.6,stagger:0.1,ease:"power2.out"
+            })
         }
-    ]
+    },[properties])
+
+       
   return (
       <>
-          {properties.length === 0 ? (<p className='not_found'>Property Not Found</p>
+          {!properties || properties.length === 0 ? (<p className='not_found'>Property Not Found</p>
           ) : (
-                  <div className='propertylist'>
+                  <div className='propertylist' ref={propertyListRef}>
                       {properties.map((property) => (
                           <Card
                               key={property._id}
@@ -94,6 +80,22 @@ const PropertyList = () => {
                  </div>
           )
           }
+
+          <div className='pagination'>
+              <button className='previous_btn' onClick={() => setCurrentPage((prev) => ({ page: prev.page - 1 }))}
+              disabled={currentPage.page === 1}
+              >
+                  <span className='material-symbols-outlined'>arrow_back_ios_new</span>
+                  
+              </button>
+
+              <button className='previous_btn' onClick={() => setCurrentPage((prev) => ({ page: prev.page + 1 }))}
+              disabled={properties.length<12 || currentPage.page === lastPage}
+              >
+                  <span className='material-symbols-outlined'>arrow_forward_ios</span>
+                  
+              </button>
+          </div>
       </>
   )
 }
