@@ -1,14 +1,12 @@
 import React from 'react'
+import MapComponent from './MapComponent'
 
-const PropertyMapInfo = () => {
+const PropertyMapInfo = ({address}) => {
     return (
       <>
       <div className='map-image-container col-md-6 col-sm-12 col-12'>
           <h2 className='map-header'>Where you'll be</h2>
-          <img
-          alt='map'
-          className='map-image'
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs9TTDly1hWpCwyVwWoO-Ael5L1HRh29-Puw&s'/>
+          <MapComponent address={address} />
         </div>
             <div className='extra-info col-md-6 col-sm-12 col-12 '>
                 <h2 className='extra heading'>Extra info</h2>

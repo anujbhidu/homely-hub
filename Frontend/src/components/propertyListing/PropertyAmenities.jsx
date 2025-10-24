@@ -8,9 +8,9 @@ const PropertyAmenities = ({amenities}) => {
         {amenities.map((amenity, index) => (
           <p key={index}>
             <span className='material-symbols-outlined'>
-              {amenity.toLowerCase()}
+              {amenity.icon}
             </span>
-            <span>{amenity}</span>
+            <span>{amenity.name}</span>
           </p>
         ))}
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Modal from "./Modal"
 
-const PropertyImg = () => {
+const PropertyImg = ({images}) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     const handleShowAllPhotos = () => {
@@ -12,15 +12,17 @@ const PropertyImg = () => {
         setIsModalOpen(false)
     }
 
-    const images = [
-        {url:"/assets/property2.webp"},
-        {url:"/assets/property3.webp"},
-        {url:"/assets/property4.webp"},
-        {url:"/assets/property5.webp"},
-        {url:"/assets/property3.webp"},
-        {url:"/assets/property3.webp"},
-        {url:"/assets/property3.webp"},
-    ]
+    // const images = [
+    //     {url:"/assets/property2.webp"},
+    //     {url:"/assets/property3.webp"},
+    //     {url:"/assets/property4.webp"},
+    //     {url:"/assets/property5.webp"},
+    //     {url:"/assets/property3.webp"},
+    //     {url:"/assets/property3.webp"},
+    //     {url:"/assets/property3.webp"},
+    // ]
+
+
     return (
       <>
       <div className='property-img-container'>
