@@ -27,7 +27,7 @@ const PropertyListing = () => {
     
     const { propertyName, address,
         description, images, amenities,
-        maximumGuest, price, currentBookings
+        maximumGuest, //price, currentBookings
     } = propertyDetails;
   return (
       <div className='property-container'>

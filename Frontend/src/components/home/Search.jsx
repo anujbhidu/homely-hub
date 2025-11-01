@@ -3,21 +3,22 @@ import React, { useState } from 'react'
 import { DatePicker, Space } from 'antd'
 import "react-datepicker/dist/react-datepicker.css"
 import "../../css/Home.css"
+import { useDispatch } from "react-redux"
+import { propertyAction } from "../../store/Property/property-slice"
+import { getAllProperties } from '../../store/Property/property-action'
 
 const Search = () => {
      
     const {RangePicker} = DatePicker
-    const [keyword, setKeyword] = useState({
-        city: "",
-        guests: "",
-        dateIn: "",
-        dateOut: ""
-    });
-
+    const [keyword, setKeyword] = useState({});
     const [value, setValue] = useState([]);
+    const dispatch = useDispatch();
+ 
 
     function searchHandler(e) {
         e.preventDefault();
+        dispatch(propertyAction.updateSearchParams(keyword));
+        dispatch(getAllProperties())
         setKeyword({ city: "", guests: "", dateIn: "", dateOut: "" })
         setValue([])
     }
@@ -67,7 +68,7 @@ const Search = () => {
                   onChange={(e)=>updateKeyword("guests",e.target.value)}
               />
 
-              <span className='material-symbols-outline searchicon' onClick={searchHandler}>search</span>
+              <span className='material-symbols-outlined searchicon' onClick={searchHandler}>search</span>
           </div>
       </>
   )
