@@ -68,8 +68,12 @@ const Signup = () => {
 
                   <div className='form-group'>
                       <label htmlFor='phoneNumber_field'> phoneNumber</label>
-                      <input type='password' id='phoneNumber_field' className='form-control' name='phoneNumber' value={phoneNumber} onChange={onChange}/>
+                      <input type='text' id='phoneNumber_field' className='form-control' name='phoneNumber' value={phoneNumber} onChange={onChange}/>
                   </div>
+
+                  <button id='register_button' type='submit' className='loginbutton btn-black py-3'>
+                      Register
+                  </button>
               </form>
           </div>
     </Fragment>
