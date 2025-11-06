@@ -2,66 +2,64 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
     name: "user",
-    initialState: {
-        isAuthenticated: false,
-        loading: false,
-        user: null,
-        errors: null,
+    initialState:{
+        isAuthenticated:false,
+        loading:false,
+        user:null,
+        errors:null,
         success:false
     },
-    reducers: {
-        getSignupRequest(state) {
+    reducers:{
+        getSignupRequest(state){
             state.loading = true;
         },
-        getSignupDetails(state, action) {
+        getSignupDetails(state,action){
             state.user = action.payload;
-            state.isAuthenticated = true,
-            state.loading = false
+            state.isAuthenticated= true;
+            state.loading=false
         },
-        getLoginRequest(state) {
+        getLoginRequest(state){
             state.loading = true
         },
-        getLoginDetails(state, action) {
+        getLoginDetails(state,action){
             state.user = action.payload;
-            state.isAuthenticated = true;
+            state.isAuthenticated= true;
             state.loading = false
         },
-        getError(state, action) {
+        getError(state,action){
             state.errors = action.payload;
             state.loading = false;
         },
-        getCurrentUserRequest(state) {
+        getCurrentUserRequest(state){
             state.loading = true;
         },
-        getUpdateUserRequest(state) {
+        getUpdateUserRequest(state){
             state.loading = true
         },
-        getCurrentUser(state, action) {
+        getCurrentUser(state,action){
             state.user = action.payload;
             state.isAuthenticated = true;
-            state.loading = false
+            state.loading = false;
         },
-        getLogoutRequest(state) {
-            state.loading = true
+        getLogoutRequest(state){
+            state.loading = true;
         },
-        getLogout(state, action) {
+        getLogout(state,action){
             state.user = action.payload;
-            state.isAuthenticated = true;
-            state.loading = false
+            state.isAuthenticated= false;
+            state.loading= false;
         },
-        getPasswordRequest(state) {
-            state.loading = true
+        getPasswordRequest(state){
+            state.loading = true;
         },
-        getPasswordSuccess(state, action) {
-            state.success = action.payload
-            state.errors = null
+        getPasswordSuccess(state,action){
+            state.success = action.payload;
+            state.errors= null;
         },
-        createErrors(state) {
-            state.errors = null;
+        clearErrors(state){
+            state.errors=null
         }
-
     }
 })
-
-export const userActions = userSlice.actions;
-export default userSlice
+export const userActions= userSlice.actions;
+export default userSlice;

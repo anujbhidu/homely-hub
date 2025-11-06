@@ -1,23 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit"
+import {createSlice} from "@reduxjs/toolkit"
 
 const propertyDetailsSlice = createSlice({
     name: "PropertyDetails",
-    initialState: {
-        propertyDetails: null,
-        loading: false,
+    initialState:{
+        propertyDetails:null,
+        loading:false,
         error:null
     },
-    reducers: {
-        getListRequest(state) {
-            state.loading = true
+    reducers:{
+        getListRequest(state){
+            state.loading= true
         },
-        getPropertyDetails(state, action) {
-            state.propertyDetails = action.payload;
-            state.loading = false;
+        getPropertyDetails(state,action){
+            state.propertyDetails= action.payload;
+            state.loading=false;
         },
-        getErrors(state, action) {
+        getErrors(state,action){
             state.error = action.payload;
-            state.loading = false
+            state.loading=false
         }
     }
 })

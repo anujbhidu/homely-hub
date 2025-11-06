@@ -1,25 +1,24 @@
 import React,{useState} from 'react'
-import FilterModal from './FilterModal'
-
+import FilterModal  from './FilterModal'
 
 const Filter = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const[isModalOpen, setIsModalOpen] = useState(false);
 
-    const handleShowAllPhotos = () => {
+    const handleShowAllPhotos =() =>{
         setIsModalOpen(true)
     }
-    const handleCloseModal = () => {
+    const handleCloseModal =()=>{
         setIsModalOpen(false)
     }
   return (
-      <>
-          <span className='material-symbols-outlined filter'
-          onClick={handleShowAllPhotos}
-          >
-              tune
-          </span>
-          {isModalOpen && <FilterModal onClose={handleCloseModal}/>}
-      </>
+    <>
+      <span className='material-symbols-outlined filter'
+      onClick={handleShowAllPhotos}>
+        tune
+
+      </span>
+      {isModalOpen && <FilterModal onClose={handleCloseModal}/>}
+    </>
   )
 }
 

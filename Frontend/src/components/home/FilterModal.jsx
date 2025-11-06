@@ -87,7 +87,8 @@ const FilterModal = ({ onClose }) => {
 
   return (
     <div className="modal-backdrop">
-      <div className="modal-content" style={{maxHeight:"80vh",overflow:"auto"}}>
+      <div className="modal-content" 
+      style={{maxHeight:"80vh", overflow:"auto"}}>
         <h4>
           Filters <hr />
         </h4>
