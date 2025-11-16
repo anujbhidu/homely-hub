@@ -1,11 +1,13 @@
 import { paymentActions } from "./payment-slice";
 import {axiosInstance} from "../../utils/axios"
 
+const api = import.meta.env.VITE_BASE_URL;
+
 //1.checkout session creator
 export const initiateCheckoutSession = (paymentData) => async (dispatch)=>{
     try{
         dispatch(paymentActions.getCheckoutRequests());
-        const response = await axiosInstance.post("/v1/rent/user/booking/create-order", paymentData)
+        const response = await axiosInstance.post(`${api}/v1/rent/user/booking/create-order`, paymentData)
         if (!response)throw new Error("Failed to initiate checkout session");
         dispatch(paymentActions.getCheckoutSuccess(response.data));
     }
@@ -19,7 +21,7 @@ export const initiateCheckoutSession = (paymentData) => async (dispatch)=>{
 export const verifyPayment = (verifyData) => async (dispatch) =>{
     try{
         dispatch(paymentActions.getVerifyRequest());
-        const response = await axiosInstance.post("/v1/rent/user/booking/verify-payment", verifyData)
+        const response = await axiosInstance.post(`${api}/v1/rent/user/booking/verify-payment`, verifyData)
         if(!response) throw new Error("Failed to verify payment");
         dispatch(paymentActions.getVerifySuccess(response.data))
     } catch(error){
