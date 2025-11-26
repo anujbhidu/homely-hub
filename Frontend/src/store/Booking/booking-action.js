@@ -1,11 +1,9 @@
 import {axiosInstance} from "../../utils/axios";
-import { setBookingDetails, setBookings } from "./booking-slice";
-
-const api = import.meta.env.VITE_BASE_URL;
+import { setBookingDetails,setBookings } from "./booking-slice";
 
 export const fetchBookingDetails = (bookingId) => async(dispatch) =>{
     try{
-        const response = await axiosInstance.get(`${api}/v1/rent/user/booking/${bookingId}`)
+        const response = await axiosInstance.get(`/v1/rent/user/booking/${bookingId}`)
         dispatch(setBookingDetails(response.data.data))
     } catch(error){
            console.error("Error fetching booking details", error)
@@ -13,7 +11,7 @@ export const fetchBookingDetails = (bookingId) => async(dispatch) =>{
 };
 export const fetchUserBookings =() => async(dispatch) =>{
     try{
-        const response = await axiosInstance.get(`${api}/v1/rent/user/booking`)
+        const response = await axiosInstance.get("/v1/rent/user/booking")
         dispatch(setBookings(response.data.data.bookings))
     } catch(error){
         console.error("Error fetching  user booking details", error)
